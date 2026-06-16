@@ -60,7 +60,7 @@ export default async function ProductDetailPage({
           <div className="p-8 flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Badge variant="secondary">{product.category}</Badge>
+                <Badge className="badge-brand">{product.category}</Badge>
                 {product.stock < 10 && (
                   <Badge
                     variant="outline"

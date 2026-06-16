@@ -17,7 +17,7 @@ const formatPrice = (price: number) =>
 export default function ProductCard({ product }: Props) {
   return (
     <Link href={`/products/${product.id}`}>
-      <div className="bg-white rounded-xl border hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
+      <div className="bg-[var(--surface-card)] rounded-xl border border-[var(--surface-border)] card-hover transition-all duration-200 overflow-hidden group">
         {/* Image */}
         <div className="aspect-square overflow-hidden bg-slate-100">
           {product.image_url ? (
@@ -39,7 +39,7 @@ export default function ProductCard({ product }: Props) {
             <h3 className="font-medium text-slate-800 text-sm leading-snug line-clamp-2">
               {product.name}
             </h3>
-            <Badge variant="secondary" className="text-xs shrink-0">
+            <Badge className="badge-brand text-xs shrink-0">
               {product.category}
             </Badge>
           </div>
@@ -51,7 +51,7 @@ export default function ProductCard({ product }: Props) {
           )}
 
           <div className="flex items-center justify-between pt-1">
-            <span className="font-semibold text-slate-900">
+            <span className="font-semibold text-[var(--brand-red)]">
               {formatPrice(product.price)}
             </span>
             <span

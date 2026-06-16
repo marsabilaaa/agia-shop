@@ -30,7 +30,7 @@ export default function ChatWidget() {
       {/* Chat Window */}
       <div
         className={cn(
-          "w-[360px] h-[520px] bg-white rounded-2xl shadow-2xl border transition-all duration-300 overflow-hidden",
+          "w-full max-w-[360px] h-[520px] bg-[var(--surface-card)] rounded-2xl shadow-2xl border border-[var(--surface-border)] transition-all duration-300 overflow-hidden sm:w-[360px]",
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 translate-y-4 pointer-events-none",
@@ -42,7 +42,7 @@ export default function ChatWidget() {
       {/* Toggle Button */}
       <Button
         size="icon"
-        className="h-14 w-14 rounded-full shadow-lg bg-slate-900 hover:bg-slate-700"
+        className="btn-brand h-14 w-14 rounded-full shadow-lg"
         onClick={() => setOpen((prev) => !prev)}
       >
         {open ? (

@@ -79,7 +79,12 @@ export default function ChatWindow({ sessionId }: Props) {
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="px-4 py-3 border-b bg-slate-900 rounded-t-2xl">
+      <div
+        className="px-4 py-3 border-b rounded-t-2xl"
+        style={{
+          backgroundImage: "linear-gradient(135deg, #E8281A 0%, #F5651D 100%)",
+        }}
+      >
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full bg-white/10 flex items-center justify-center">
             <Bot className="h-4 w-4 text-white" />

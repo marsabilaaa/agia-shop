@@ -71,32 +71,34 @@ export default function SearchFilter() {
 
       {/* Category filter */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs text-slate-500 font-medium">Kategori:</span>
-        <Badge
-          variant={!category ? "default" : "outline"}
-          className="cursor-pointer"
+        <span className="text-xs text-[var(--text-secondary)] font-medium">
+          Kategori:
+        </span>
+        <button
+          type="button"
+          className={`chip-inactive rounded-full ${category === "" ? "chip-active" : ""}`}
           onClick={() => updateParams("category", "")}
         >
           Semua
-        </Badge>
+        </button>
         {CATEGORIES.map((cat) => (
-          <Badge
+          <button
             key={cat}
-            variant={category === cat ? "default" : "outline"}
-            className="cursor-pointer"
+            type="button"
+            className={`chip-inactive rounded-full ${category === cat ? "chip-active" : ""}`}
             onClick={() =>
               updateParams("category", cat === category ? "" : cat)
             }
           >
             {cat}
-          </Badge>
+          </button>
         ))}
 
         {hasFilter && (
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 text-xs text-slate-400 hover:text-slate-600"
+            className="h-6 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             onClick={clearAll}
           >
             <X className="h-3 w-3 mr-1" />
