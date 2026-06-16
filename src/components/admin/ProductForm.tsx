@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Loader2 } from "lucide-react";
+import ImageUpload from "./ImageUpload";
 
 const CATEGORIES = [
   "Pakaian",
@@ -27,12 +28,11 @@ const CATEGORIES = [
 ];
 
 type Props = {
-  product?: Product
-  onSuccess: (action: 'add' | 'edit') => void
-  onCancel?: () => void
-}
+  product?: Product;
+  onSuccess: (action: "add" | "edit") => void;
+};
 
-export default function ProductForm({ product, onSuccess, onCancel }: Props) {
+export default function ProductForm({ product, onSuccess }: Props) {
   const router = useRouter();
   const supabase = createClient();
   const [loading, setLoading] = useState(false);
@@ -62,7 +62,7 @@ export default function ProductForm({ product, onSuccess, onCancel }: Props) {
       price: parseFloat(form.price),
       category: form.category,
       stock: parseInt(form.stock),
-      image_url: form.image_url.trim() || null,
+      image_url: form.image_url || null,
     };
 
     const { error } = product
@@ -76,11 +76,20 @@ export default function ProductForm({ product, onSuccess, onCancel }: Props) {
     }
 
     router.refresh();
-    onSuccess(product ? 'edit' : 'add');
+    onSuccess(product ? "edit" : "add");
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Image Upload */}
+      <div className="space-y-2">
+        <Label>Gambar Produk</Label>
+        <ImageUpload
+          value={form.image_url}
+          onChange={(url) => handleChange("image_url", url)}
+        />
+      </div>
+
       <div className="space-y-2">
         <Label htmlFor="name">Nama Produk *</Label>
         <Input
@@ -151,21 +160,14 @@ export default function ProductForm({ product, onSuccess, onCancel }: Props) {
         </Select>
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="image_url">URL Gambar</Label>
-        <Input
-          id="image_url"
-          type="url"
-          value={form.image_url}
-          onChange={(e) => handleChange("image_url", e.target.value)}
-          placeholder="https://..."
-        />
-      </div>
-
       {error && <p className="text-sm text-red-500">{error}</p>}
 
       <div className="flex justify-end gap-2 pt-2">
-        <Button type="button" variant="outline" onClick={onCancel}>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => onSuccess(product ? "edit" : "add")}
+        >
           Batal
         </Button>
         <Button type="submit" disabled={loading}>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
+import CartSheet from "@/components/cart/CartSheet";
 
 export default function Navbar() {
   return (
@@ -11,10 +12,11 @@ export default function Navbar() {
             AGIA Shop
           </span>
         </Link>
-        <nav className="flex items-center gap-4 text-sm text-slate-600">
+        <nav className="flex items-center gap-3 text-sm text-slate-600">
           <Link href="/" className="hover:text-slate-900 transition-colors">
             Produk
           </Link>
+          <CartSheet />
         </nav>
       </div>
     </header>

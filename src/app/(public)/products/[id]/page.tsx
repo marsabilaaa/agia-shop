@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ShoppingCart, Package } from "lucide-react";
 import Link from "next/link";
+import AddToCartButton from "@/components/products/AddToCartButton";
 
 const formatPrice = (price: number) =>
   new Intl.NumberFormat("id-ID", {
@@ -95,14 +96,7 @@ export default async function ProductDetailPage({
             </div>
 
             <div className="pt-6 space-y-3">
-              <Button
-                className="w-full"
-                size="lg"
-                disabled={product.stock === 0}
-              >
-                <ShoppingCart className="h-4 w-4 mr-2" />
-                {product.stock === 0 ? "Stok Habis" : "Tambah ke Keranjang"}
-              </Button>
+              <AddToCartButton product={product} />
               <p className="text-xs text-center text-slate-400">
                 Tanya chatbot kami untuk rekomendasi produk lainnya
               </p>
