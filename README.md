@@ -26,6 +26,9 @@ Aplikasi mini ecommerce dengan manajemen produk dan AI chatbot berbasis data pro
 
 ### Admin Panel
 - Login dengan Supabase Auth
+**Link Admin:** https://agia-shop.vercel.app/admin
+- Email: `admin@agia.com`
+- Password: `admin123456`
 - CRUD produk (tambah, edit, hapus) dengan konfirmasi dialog
 - Dashboard ringkasan (total produk, percakapan, stok menipis)
 - Rekap seluruh percakapan chatbot beserta isi chat
